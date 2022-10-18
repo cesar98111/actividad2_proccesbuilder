@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,7 +16,8 @@ public class Main {
             }
 
             for (int i = 0; i < proceso.length; i++) {
-                proceso[i].waitFor();
+                proceso[i].waitFor(100, TimeUnit.MILLISECONDS);
+                proceso[i].destroy();
             }
         }catch (IOException | InterruptedException e){
             System.out.println("no funciona");
