@@ -1,3 +1,5 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.io.IOException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -11,6 +13,7 @@ public class Main {
         Process proceso [] = new Process[sc.nextInt()];
 
         try{
+            long inicio = System.currentTimeMillis();
             for (int i = 0; i < proceso.length; i++) {
                 proceso[i] = pb.start();
             }
@@ -19,6 +22,8 @@ public class Main {
                 proceso[i].waitFor(100, TimeUnit.MILLISECONDS);
                 proceso[i].destroy();
             }
+            long finaal = System.currentTimeMillis();
+            System.out.println("el programa a tardado:" +(finaal+inicio));
         }catch (IOException | InterruptedException e){
             System.out.println("no funciona");
         }
